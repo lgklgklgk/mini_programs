@@ -16,4 +16,32 @@ class ParagraphTruncator
   end
 end
 
-binding.pry
+class Driver
+  attr_reader :text, :truncation
+  def self.prompt_for_truncation
+    print "How many words would you like to display? "
+    @truncation = gets.chomp.to_i
+    if @truncation > 0
+      return @truncation
+    else
+      Driver.prompt_for_truncation
+    end
+  end
+  
+  def self.prompt_for_string
+    print "Please input the text that needs truncating. "
+    @text = gets.chomp
+    if @text.split.size > @truncation
+      return @text
+    else
+      Driver.prompt_for_string
+    end
+  end
+  def self.launcher
+    Driver.prompt_for_truncation
+    Driver.prompt_for_string
+    ParagraphTruncator.truncate(@truncation, @text)
+  end
+    
+end
+Driver.launcher

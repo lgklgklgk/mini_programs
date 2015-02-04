@@ -57,6 +57,7 @@ class Driver
   attr_reader :words
 
 # Public: self.prompt
+# Prompts user for some words to join.
 
 # Parameters   : Nil
 # Returns      : The variable words_array which is set equal to user input.
@@ -70,6 +71,7 @@ class Driver
   end
   
 # Public: self.launcher
+# Launches WordConnector.
 #
 # Parameters: prompt - Method: automatically calls the prompt method.
 #
